@@ -10,32 +10,17 @@ var MessageView = {
     `),
   filter: function(string) {
     var replacements = {
-      '&':  '&amp',
-      '<':  '&lt',
+      '&': '&amp',
+      '<': '&lt',
       '>': '&gt',
       '"': '&quot',
       "'": '&#x27'
     };
-    var newString = '';
-    var inner = function(string, char, replacement) {
-
-      //inner-recursive function
-      //base case (if indexOf returns -1)
-      var index = string.indexOf(char);
-      if (index === -1) {
-        return string;
-      } else {
-        newString += string.slice(0, index) + replacements[char];
-        if (index + 1) {
-          newString += inner(string.slice(index + 1), char, replacement);
-        } else {
-          return;
-        }
-      }
-    };
-
+    var newString = string;
+    //iterate replacements
     for (let char in replacements) {
-      inner(string, char, replacements[char]);
+      //call replaceAll(), passing in key and value
+      newString = newString.replaceAll(char, replacements[char]);
     }
     return newString;
   }
