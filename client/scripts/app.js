@@ -26,16 +26,22 @@ var App = {
       //for loop over data.results
       for (let i = 0; i < data.results.length; i++) {
         //concat the results of messageView function to html
-        console.log (this)
-        // debugger;
-        html += MessageView.render({username: data.results[i].username});
+        console.log (this);
+
+        var renderData = {};
+        renderData.roomname = data.results[i].roomname ? data.results[i].roomname : '';
+        renderData.username = data.results[i].username;
+        renderData.createdAt = data.results[i].createdAt;
+        renderData.objectId = data.results[i].objectId;
+        renderData.text = data.results[i].text;
+        html += MessageView.render(renderData);
       }
-        //(jquery) append html to dom
-        $("#chats").append(html);
+      //(jquery) append html to dom
+      $('#chats').append(html);
       callback();
     });
   },
-// }
+
 
   startSpinner: function() {
     App.$spinner.show();
