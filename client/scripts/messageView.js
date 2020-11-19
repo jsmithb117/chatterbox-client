@@ -10,11 +10,11 @@ var MessageView = {
     `),
   filter: function(string) {
     var replacements = {
-      '&': '&amp',
-      '<': '&lt',
-      '>': '&gt',
-      '"': '&quot',
-      "'": '&#x27'
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;'
     };
     var newString = string;
     //iterate replacements

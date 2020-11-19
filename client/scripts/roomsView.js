@@ -6,7 +6,8 @@ var RoomsView = {
   initialize: function() {
   },
 
-  render: function() {
+  renderRoom: function(roomName) {
+    RoomsView.$select.append(`<option value='${MessageView.filter(roomName)}'> ${MessageView.filter(roomName)} </option>`);
   }
 
 };
