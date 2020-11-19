@@ -17,14 +17,10 @@ var FormView = {
     message.roomname = Rooms.currentRoom;
     message.createdAt = new Date();
     var successCB = function(event) {
-      console.log (event);
-      //assign objectId to message
+      // console.log (event);
+      // debugger;
       message.objectId = event.objectId;
-      //filter
-      // message = MessageView.filter(message);
-      //template it
-      // message = MessageView.render(message);
-      //render it
+      message.createdAt = event.createdAt;
       MessagesView.renderMessage(message);
     };
     Parse.create(message, successCB);

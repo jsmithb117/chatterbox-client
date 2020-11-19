@@ -15,6 +15,7 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
+
   },
 
   fetch: function(callback = ()=>{}) {
@@ -28,6 +29,16 @@ var App = {
     });
   },
 
+  fetchNew: function(callback = ()=>{}) {
+    Parse.readAll((data) => {
+      for (let i = 0; i < data.results.length; i++) {
+        if (!Messages[data.results[i].objectId]) {
+          MessagesView.renderMessage(data.results[i]);
+        }
+      }
+      callback();
+    });
+  },
 
   startSpinner: function() {
     App.$spinner.show();
