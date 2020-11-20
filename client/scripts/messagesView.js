@@ -25,7 +25,11 @@ var MessagesView = {
     Messages[renderData.objectId] = renderData;
     Messages.length++;
     html += MessageView.render(renderData);
-    // html = html.concat(MessageView.render(renderData));
+
+    if (!Rooms.roomsList.includes(data.roomname) && data.roomname) {
+      Rooms.roomsList.push(data.roomname);
+      RoomsView.renderRoom(data.roomname);
+    }
 
     $('#chats').prepend(html);
   }
