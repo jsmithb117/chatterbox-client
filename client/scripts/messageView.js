@@ -2,7 +2,7 @@ var MessageView = {
 
   render: _.template(`
       <div id= <%= objectId %> class="chats" >
-        <div class="username"><%= username %></div>
+        <button class="username" onclick="Friends.addFriend(event)"><%= username %></button>
         <span class="message"><%= text %></span>
         <div class="roomname"><%= roomname %> </div>
         <div class="createdAt" ><%= createdAt %></div>
