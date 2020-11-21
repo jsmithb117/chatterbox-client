@@ -11,7 +11,7 @@ body {
     text-align: left;
     background: white;
     padding: 50px 60px;
-    border: solid #ddd;
+    border: solid rgb(0, 0, 0);
     border-width: 0 1px 1px 1px;
 }
 
@@ -59,10 +59,11 @@ form input[type=text] {
     padding: 5px;
 }
 
-.chat {
+.chats {
     padding: 5px;
     margin-bottom: 5px;
     background-color: #eee;
+    border-style: solid
 }
 
 .chat .username {
@@ -88,3 +89,14 @@ form input[type=text] {
     background-color: #0090da;
 }
 
+.room-button {
+    /* padding: 15px; */
+    margin: 5px;
+}
+
+#rooms {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}

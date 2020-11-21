@@ -9,10 +9,8 @@ var App = {
 
     FormView.initialize();
     RoomsView.initialize();
-    // MessagesView.initialize();
     Rooms.initialize();
     Friends.initialize();
-    // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
@@ -21,10 +19,6 @@ var App = {
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
-      // examine the response from the server request:
-      console.log(data.results);
-      //html variable, empty string
-      // debugger;
       MessagesView.initialize(data.results);
       callback();
     });

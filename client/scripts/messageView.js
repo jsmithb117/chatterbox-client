@@ -3,9 +3,10 @@ var MessageView = {
   render: _.template(`
       <div id= <%= objectId %> class="chats" >
         <button class="username" onclick="Friends.addFriend(event)"><%= username %></button>
-        <span class="message"><%= text %></span>
-        <div class="roomname"><%= roomname %> </div>
-        <div class="createdAt" ><%= createdAt %></div>
+        <br>
+        <span class="message">Message: <%= text %></span>
+        <div class="roomname">Room name: <%= roomname %> </div>
+        <div class="createdAt" >Created at: <%= createdAt %></div>
       </div>
     `),
   filter: function(string) {
@@ -17,10 +18,10 @@ var MessageView = {
       "'": '&#x27;'
     };
     var newString = string;
-    //iterate replacements
-    for (let char in replacements) {
-      //call replaceAll(), passing in key and value
-      newString = newString.replaceAll(char, replacements[char]);
+    if (newString) {
+      for (let char in replacements) {
+        newString = newString.replaceAll(char, replacements[char]);
+      }
     }
     return newString;
   }

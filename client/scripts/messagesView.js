@@ -4,34 +4,30 @@ var MessagesView = {
 
   initialize: function(data) {
     var html = '';
-    //for loop over data
     for (let i = data.length - 1; i > 0; i--) {
-      //concat the results of messageView function to html
-      // console.log (this);
       MessagesView.renderMessage(data[i]);
     }
-    //(jquery) append html to dom
     $('#chats').prepend(html);
   },
 
   renderMessage: function(data) {
     var html = '';
     var renderData = {};
-    renderData.roomname = data.roomname ? data.roomname : '';
-    renderData.username = data.username ? data.username : '';
-    renderData.createdAt = data.createdAt ? data.createdAt : '';
-    renderData.objectId = data.objectId ? data.objectId : '';
-    renderData.text = data.text ? data.text : '';
-    Messages[renderData.objectId] = renderData;
-    Messages.length++;
-    html += MessageView.render(renderData);
-
-    if (!Rooms.roomsList.includes(data.roomname) && data.roomname) {
-      Rooms.roomsList.push(data.roomname);
-      RoomsView.renderRoom(data.roomname);
+    if (data.roomname === MessageView.filter(data.roomname) && data.username === MessageView.filter(data.username) && data.text === MessageView.filter(data.text)) {
+      renderData.roomname = data.roomname ? MessageView.filter(data.roomname) : '';
+      renderData.username = data.username ? MessageView.filter(data.username) : '';
+      renderData.createdAt = data.createdAt ? data.createdAt : '';
+      renderData.objectId = data.objectId ? data.objectId : '';
+      renderData.text = data.text ? MessageView.filter(data.text) : '';
+      Messages[renderData.objectId] = renderData;
+      Messages.length++;
+      html += MessageView.render(renderData);
+      if (!Rooms.roomsList.includes(data.roomname) && data.roomname) {
+        Rooms.roomsList.push(MessageView.filter(data.roomname));
+        RoomsView.renderRoom(MessageView.filter(data.roomname));
+      }
     }
-
     $('#chats').prepend(html);
   }
-
 };
+
