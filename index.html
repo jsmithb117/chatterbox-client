@@ -26,6 +26,7 @@
       <h1>chatterbox</h1>
       <div>
         <button onclick="App.fetchNew()">Refresh</button>
+        <button onclick="Messages.renderAll()">Show All Messages</button>
       </div>
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
@@ -33,7 +34,7 @@
         <select id="rooms-select">
 
         </select>
-        <button onclick="RoomsView.filterRooms(event)">Add Room</button>
+        <button class="addbutton">Add Room</button>
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>

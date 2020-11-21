@@ -77,7 +77,7 @@ describe('chatterbox', function() {
 
     it('should be able to add rooms to the DOM', function() {
       RoomsView.renderRoom('superLobby');
-      expect($('#rooms select').children().length).to.equal(1);
+      expect($('#rooms select').children().length).to.equal(2);
     });
 
   });
@@ -104,6 +104,7 @@ describe('chatterbox', function() {
       window.prompt = sinon.stub().returns('testroom');
 
       App.initialize();
+      // debugger;
       $('#rooms').find('button').trigger('click');
       expect(Rooms.add.called).to.be.true;
 
